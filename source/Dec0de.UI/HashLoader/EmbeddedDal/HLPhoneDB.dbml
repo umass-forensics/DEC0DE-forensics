@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PhoneDecode" Class="PhoneDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=BLPHONEPC\SQLEXPRESS;Initial Catalog=PhoneDecode;Integrated Security=True" SettingsObjectName="Dec0de.UI.Properties.Settings" SettingsPropertyName="PhoneDecodeConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.usp_HashRun_Insert" Method="usp_HashRun_Insert">
+    <Parameter Name="dateTime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="memoryId" Type="System.String" DbType="VarChar(4)" />
+    <Parameter Name="slideAmount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="blocksizeBytes" Type="System.Int32" DbType="Int" />
+    <Parameter Name="numBlocks" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="timeToHashSeconds" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="hashType" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="usp_HashRun_InsertResult">
+      <Column Name="hashRunId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_HashRun_Update" Method="usp_HashRun_Update">
+    <Parameter Name="hashRunId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="numBlocks" Type="System.Int32" DbType="Int" />
+    <Parameter Name="timeToHashSeconds" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Phone_Insert" Method="usp_Phone_Insert">
+    <Parameter Name="make" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="model" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="subId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(MAX)" />
+    <ElementType Name="usp_Phone_InsertResult">
+      <Column Name="phoneId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Phoneid_GetByMemoryid" Method="usp_Phoneid_GetByMemoryid">
+    <Parameter Name="memoryId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="blocksize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="slideAmount" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Phoneid_GetByMemoryidResult">
+      <Column Name="phoneId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+</Database>

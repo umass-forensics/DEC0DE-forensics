@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{11A6973D-F520-4B2D-8407-93353EC5DB01}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Dec0de.Bll</RootNamespace>
+    <AssemblyName>Dec0de.Bll</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Dec0de.Bll.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug Run|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug Run\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'MonoRelease|AnyCPU'">
+    <OutputPath>bin\MonoRelease\</OutputPath>
+    <DefineConstants>TRACE;MONO</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Data.SQLite, Version=1.0.82.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\dependencies\System.Data.SQLite.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FieldPaths.cs" />
+    <Compile Include="Filter\NoFilter.cs" />
+    <Compile Include="Ranking\AddressBookFeatureSet.cs" />
+    <Compile Include="Ranking\AlphaPerLengthFeature.cs" />
+    <Compile Include="AnswerLoader\MetaAddressBookEntry.cs" />
+    <Compile Include="AnswerLoader\MetaCallLog.cs" />
+    <Compile Include="AnswerLoader\MetaField.cs" />
+    <Compile Include="AnswerLoader\MetaSms.cs" />
+    <Compile Include="AnswerLoader\MetaFieldType.cs" />
+    <Compile Include="AresController.cs" />
+    <Compile Include="Ranking\BigramPerLengthFeature.cs" />
+    <Compile Include="BinaryFile.cs" />
+    <Compile Include="CYK\CYK.cs" />
+    <Compile Include="CYK\TableEntry.cs" />
+    <Compile Include="Dec0deController.cs" />
+    <Compile Include="EmbeddedDal\Dalbase.cs" />
+    <Compile Include="EmbeddedDal\PhoneDb.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhoneDb.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Field.cs" />
+    <Compile Include="Filter\Block.cs" />
+    <Compile Include="Filter\BlockHashFilter.cs" />
+    <Compile Include="Filter\Cell.cs" />
+    <Compile Include="Filter\FilterController.cs" />
+    <Compile Include="Filter\FilterResult.cs" />
+    <Compile Include="Filter\Pair.cs" />
+    <Compile Include="Filter\SequenceAligner.cs" />
+    <Compile Include="Grammar.cs" />
+    <Compile Include="ProductionRule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Ranking\CallLogFeatureSet.cs" />
+    <Compile Include="Ranking\SmsFeatureSet.cs" />
+    <Compile Include="Ranking\DateTimeDistanceFeature.cs" />
+    <Compile Include="Ranking\FieldBase.cs" />
+    <Compile Include="Ranking\AreaCodeFeature.cs" />
+    <Compile Include="Ranking\PhoneCrossRecordFeature.cs" />
+    <Compile Include="Ranking\PhoneFormFeature.cs" />
+    <Compile Include="Record.cs" />
+    <Compile Include="CYK\SpecialConditions.cs" />
+    <Compile Include="UIController.cs" />
+    <Compile Include="UserStates\Loader.cs" />
+    <Compile Include="UserStates\UserState.cs" />
+    <Compile Include="Utilities.cs" />
+    <Compile Include="Viterbi\AnchorViterbi.cs" />
+    <Compile Include="Viterbi\AsciiLengthState.cs" />
+    <Compile Include="Viterbi\BcdDigitState.cs" />
+    <Compile Include="Viterbi\BigramState.cs" />
+    <Compile Include="Viterbi\BigramStateValue.cs" />
+    <Compile Include="Viterbi\Enums.cs" />
+    <Compile Include="Viterbi\MetaResult.cs" />
+    <Compile Include="Viterbi\Printer.cs" />
+    <Compile Include="Viterbi\Program.cs" />
+    <Compile Include="Viterbi\SevenBitState.cs" />
+    <Compile Include="Viterbi\SqliteHeaderLengthState.cs" />
+    <Compile Include="Viterbi\SqliteRecordLengthState.cs" />
+    <Compile Include="Viterbi\ThreadedViterbi.cs" />
+    <Compile Include="Viterbi\TimeState.cs" />
+    <Compile Include="Viterbi\State.cs" />
+    <Compile Include="Viterbi\StateMachine.cs" />
+    <Compile Include="Viterbi\StateValue.cs" />
+    <Compile Include="Viterbi\Transition.cs" />
+    <Compile Include="Viterbi\UserDefinedStates.cs" />
+    <Compile Include="Viterbi\Viterbi.cs" />
+    <Compile Include="Viterbi\ViterbiField.cs" />
+    <Compile Include="Viterbi\ViterbiResult.cs" />
+    <Compile Include="Viterbi\ViterbiTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="EmbeddedDal\PhoneDb.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PhoneDb.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EmbeddedDal\PhoneDb.dbml.layout">
+      <DependentUpon>PhoneDb.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

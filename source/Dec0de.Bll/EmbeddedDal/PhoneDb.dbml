@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PhoneDecode" Class="PhoneDbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=BLPHONEPC\SQLEXPRESS;Initial Catalog=PhoneDecode;Integrated Security=True" SettingsObjectName="Dec0de.Bll.Properties.Settings" SettingsPropertyName="PhoneConnectionString" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.usp_ParsedFields_Insert" Method="usp_ParsedFields_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="offset" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="hex" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="printable" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ParsedPhoneNum_Insert" Method="usp_ParsedPhoneNum_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="areaCode" Type="System.String" DbType="VarChar(3)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ParsedPhoneNum_AutoUpdate" Method="usp_ParsedPhoneNum_AutoUpdate">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Answers_PhoneNum_Insert" Method="usp_Answers_PhoneNum_Insert">
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="areaCode" Type="System.String" DbType="VarChar(3)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Parse_Insert" Method="usp_Parse_Insert">
+    <Parameter Name="timeUdt" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="memoryId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="blockSizeBytes" Type="System.Int32" DbType="Int" />
+    <Parameter Name="slideAmount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="bytesFiltered" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="bytesNotFiltered" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="filterTimeSeconds" Type="System.Int32" DbType="Int" />
+    <Parameter Name="viterbiTimeSeconds" Type="System.Int32" DbType="Int" />
+    <Parameter Name="notes" Type="System.String" DbType="VarChar(200)" />
+    <ElementType Name="usp_Parse_InsertResult">
+      <Column Name="parseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_GetByParseId" Method="usp_ParsedFields_GetByParseId">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_ParsedFields_GetByParseIdResult">
+      <Column Name="parseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="offset" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="hex" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="printable" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Hash_GetByPhoneId" Method="usp_Hash_GetByPhoneId">
+    <Parameter Name="blocksize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="slideAmount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="memoryId" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="usp_Hash_GetByPhoneIdResult">
+      <Column Name="hash" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="blockindex" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Answers_AddressBook_Insert" Method="usp_Answers_AddressBook_Insert">
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="source" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Answers_CallLog_Insert" Method="usp_Answers_CallLog_Insert">
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="type" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="timeStamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="source" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Answers_SMS_Insert" Method="usp_Answers_SMS_Insert">
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="timeStamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="message" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="source" Type="System.String" DbType="VarChar(20)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_GetAllRecordPhoneNumbers_ByParseId" Method="usp_ParsedFields_GetAllRecordPhoneNumbers_ByParseId">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_ParsedFields_GetAllRecordPhoneNumbers_ByParseIdResult">
+      <Column Name="number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_GetAllRecordPhoneNumbersWithRecordType_ByParseId" Method="usp_ParsedFields_GetAllRecordPhoneNumbersWithRecordType_ByParseId">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_ParsedFields_GetAllRecordPhoneNumbersWithRecordType_ByParseIdResult">
+      <Column Name="number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="recordType" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Feature_AddressBook_Insert" Method="usp_Feature_AddressBook_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="areaCodeScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="phoneCrossScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="phoneFormScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="lengthScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="alphaScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="bigramScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="isTruePositive" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Feature_AddressBook_GetByParseId" Method="usp_Feature_AddressBook_GetByParseId">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Feature_AddressBook_GetByParseIdResult">
+      <Column Name="parseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="number" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="areaCodeScore" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="phoneCrossScore" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="phoneFormScore" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="lengthScore" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="alphaScore" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="bigramScore" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="isTruePositive" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_AddressBook_GetFalsePositivesByParseId" Method="usp_ParsedFields_AddressBook_GetFalsePositivesByParseId">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_ParsedFields_AddressBook_GetFalsePositivesByParseIdResult">
+      <Column Name="phoneId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="parseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_AddressBook_Insert" Method="usp_ParsedFields_AddressBook_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="offset" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_CallLog_Insert" Method="usp_ParsedFields_CallLog_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="type" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="timeStamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="offset" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Decode_CallLogs_CompareAnswersToParse" Method="usp_Decode_CallLogs_CompareAnswersToParse">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Decode_CallLogs_CompareAnswersToParseResult">
+      <Column Name="phoneId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="parseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="answer_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="answer_sevenDigit" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="answer_timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="answer_source" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Feature_Calllog_Insert" Method="usp_Feature_Calllog_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="timestamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="areaCodeScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="phoneCrossScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="phoneFormScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="lengthScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="alphaScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="bigramScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="dateDist" Type="System.Double" DbType="Float" />
+    <Parameter Name="isTruePositive" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_SMS_Insert" Method="usp_ParsedFields_SMS_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sevenDigit" Type="System.String" DbType="VarChar(7)" />
+    <Parameter Name="number2" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="sevenDigit2" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="message" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="timeStamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="offset" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_Decode_SMS_CompareAnswersToParse" Method="usp_Decode_SMS_CompareAnswersToParse">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Decode_SMS_CompareAnswersToParseResult">
+      <Column Name="phoneId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="parseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="answer_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="answer_sevenDigit" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="answer_timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="answer_message" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="answer_source" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sevnDigit" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="number2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="sevnDigit2" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="timestamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="message" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Feature_Sms_Insert" Method="usp_Feature_Sms_Insert">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="number2" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="timestamp" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="message" Type="System.String" DbType="VarChar(200)" />
+    <Parameter Name="areaCodeScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="phoneCrossScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="phoneFormScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="lengthScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="alphaScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="bigramScore" Type="System.Double" DbType="Float" />
+    <Parameter Name="dateDist" Type="System.Double" DbType="Float" />
+    <Parameter Name="isTruePositive" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.usp_ParsedFields_Sms_GetFalsePositivesByParseId" Method="usp_ParsedFields_Sms_GetFalsePositivesByParseId">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_ParsedFields_Sms_GetFalsePositivesByParseIdResult">
+      <Column Name="phoneId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="parseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="number2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="timeStamp" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="message" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Hash_GetUnfilteredBlocks" Method="usp_Hash_GetUnfilteredBlocks">
+    <Parameter Name="blocksize" Type="System.Int32" DbType="Int" />
+    <Parameter Name="slideAmount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="phoneId" Type="System.Int32" DbType="Int" />
+    <Parameter Name="memoryId" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="noFilter" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="slideAmountLibrary" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Hash_GetUnfilteredBlocksResult">
+      <Column Name="hash" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="blockIndexFirst" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.usp_Decode_AddressBook_CompareAnswersToParse" Method="usp_Decode_AddressBook_CompareAnswersToParse">
+    <Parameter Name="parseId" Type="System.Int32" DbType="Int" />
+    <ElementType Name="usp_Decode_AddressBook_CompareAnswersToParseResult">
+      <Column Name="phoneId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="parseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="answer_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="answer_number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="answer_sevenDigit" Type="System.String" DbType="VarChar(7)" CanBeNull="true" />
+      <Column Name="answer_source" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="number" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

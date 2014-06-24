@@ -1,0 +1,133 @@
+﻿namespace Dec0de.Bll.Viterbi
+{
+    /// <summary>
+    /// Enumeration of possible Meta state machines (meant for record level inference).
+    /// </summary>
+    public enum MetaMachine : byte
+    {
+        BinaryLarge = 0x00,
+        Binary = 0x01,
+        PhoneNumber = 0x02,
+        TimeStamp = 0x03,
+        Text = 0x04,
+        CallLogDuration = 0x05,
+        CallLogType = 0x06,
+        SmsPrepend = 0x07,
+        CallLogNumberIndex = 0x08,
+        CallLogTypePrepend = 0x09,
+        MarkerSamsungSms = 0x0A
+    }
+
+    public enum RunType
+    {
+        AnchorPoints,
+        GeneralParse,
+        PhoneNumberOnly,
+        PhoneNumberAndText,
+        TextOnly,
+        PhoneNumberTextAndTimeStamp,
+        Meta,
+        Moto,
+        BinaryOnly,
+        SqliteOnly
+    }
+
+    /// <summary>
+    /// Enumeration listing the type of State Machine.
+    /// Should be name with METATYPE_SPECIFICTYPE
+    /// e.g. PhoneNumber_MotoUnicode
+    /// </summary>
+    public enum MachineList
+    {
+        Start,
+        Binary,
+        BinaryFF,
+        BinaryNull,
+        Text_All,
+        Sql_SqliteRecord,
+        TimeStamp_Unix,
+        TimeStamp_Samsung,
+        TimeStamp_Nokia,
+        TimeStamp_Sms,
+        TimeStamp_SmsGsm,
+        TimeStamp_Epoch1900Tuple,
+        Text_Unicode,
+        Text_UnicodeEndian,
+        Text_AsciiPrintable,
+        Text_AsciiBigram,
+        Test_AsciiBigramWithPrintable,
+        CallLogType_All,
+        CallLogType_SimpleLE,
+        CallLogType_Moto,
+        CallLogTypePrepend_Moto,
+        CallLogTypeAndTimeStamp_Moto,
+        CallLogTypeWithPrepend_Moto,
+        CallLogType_Samsung,
+        CallLogNumberIndexAndNumber_Nokia,
+        CallLogDuration_Moto,
+        CallLogTimeStamp_Nokia,
+        PhoneNumberIndex_Nokia,
+        TimeStamp_All,
+        Combo_PhoneNumberAndText,
+        SMS,
+        SMSPrepend_All,
+        PhoneNumber_All,
+        PhoneNumber_MotoElevenUnicode,
+        PhoneNumber_MotoSevenDigit,
+        PhoneNumber_MotoTenDigit,
+        PhoneNumber_MotoElevenDigit,
+        PhoneNumber_SamsungElevenDigitAscii,
+        PhoneNumber_NokiaSevenDigit,
+        PhoneNumber_NokiaEightDigit,
+        PhoneNumber_NokiaTenDigit,
+        PhoneNumber_NokiaElevenDigit,
+        PhoneNumber_NokiaTwelveDigit,
+        PhoneNumber_NokiaAll,
+        PhoneNumber_InternationalFormatElevenDigit,
+        PhoneNumber_InternationalFormat,
+        PhoneNumber_BCD,
+        PhoneNumber_BCDPrepended,
+        PhoneNumber_UKAsciiTrunk0,
+        PhoneNumber_UKAsciiCountryCode,
+        Meta_AddressBook,
+        Meta_Binary,
+        Meta_CallLogAll,
+        Meta_CallLogGeneric,
+        Meta_CallLogGeneric2,
+        Meta_CallLogGeneric3,
+        Meta_CallLogGeneric4,
+        Meta_CallLogNokiaSingle,
+        Meta_CallLogNokiaMulti,
+        Meta_CallLogNokiaMulti_v2,
+        Meta_CallLogMoto,
+        Meta_CallLogSamsung,
+        Meta_Sms,
+        Meta_AddressBookNokia,
+        Meta_AddressBookSamsung,
+        Meta_CallLogNokiaSingle_v2,
+        AnchorFields,
+        PhoneNumber_SamsungTenDigitAscii,
+        PhoneNumber_SamsungSevenDigitAscii,
+        PhoneNumber_MotoTenUnicode,
+        PhoneNumber_MotoSevenUnicode,
+        PhoneNumber_InternationalFormatTenDigit,
+        Prepend_InternationalTenDigit,
+        Prepend_InternationalElevenDigit,
+        PhoneNumber_InternaltionalFormatWithPrepend,
+        PhoneNumber_InternationalFormatSevenDigit,
+        Prepend_InternationalSevenDigit,
+        Prepend_BCD,
+        PhoneNumber_BCDWithPrepend,
+        Meta_AddressBookAll,
+        Meta_AddressBookMulti,
+        RecordEnd_Nokia,
+        Text_AsciiStringWithLength,
+        TimeStamp_NokiaEndian,
+        TimeStamp_MotoSms,
+        Text_SevenBitWithLength,
+        Marker_SamsungSms,
+        TimeStamp_User,
+        PhoneNumber_User,
+        Text_User
+    }
+}
